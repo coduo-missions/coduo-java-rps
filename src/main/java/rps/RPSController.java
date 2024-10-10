@@ -1,6 +1,7 @@
 package rps;
 
-import rps.domain.WinCount;
+import rps.domain.NumberOfWinsInTheGame;
+import rps.util.coduo.RandomTool;
 import rps.view.InputView;
 import rps.view.OutputView;
 
@@ -9,24 +10,33 @@ public class RPSController {
     private InputView inputView;
     private OutputView outputView;
 
-    private WinCount winCount;
+    private NumberOfWinsInTheGame numberOfWinsInTheGame;
 
     public RPSController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }
 
-    public void play() {
+    public void start() {
         outputView.printStartMessage();
         readWinCount();
+        playRPS();
+    }
+
+    private void playRPS() {
+        try {
+            String selectedByUserRPS = inputView.readRPS();
+        }catch (Exception e) {
+            outputView.printException(e.getMessage());
+        }
+
     }
 
     private void readWinCount() {
         int tmp;
-
         try {
             tmp = inputView.readNumberOfWins();
-            winCount = new WinCount(tmp);
+            numberOfWinsInTheGame = new NumberOfWinsInTheGame(tmp);
         }catch (Exception e) {
             outputView.printException(e.getMessage());
         }
