@@ -26,6 +26,9 @@ public class RPSController {
     private void playRPS() {
         try {
             String selectedByUserRPS = inputView.readRPS();
+            String selectedByComputerRPS = RandomTool.pickRSP();
+            int judged = Judgment.judge(selectedByUserRPS, selectedByComputerRPS);
+            outputView.printResult(selectedByComputerRPS, judged);
         }catch (Exception e) {
             outputView.printException(e.getMessage());
         }
