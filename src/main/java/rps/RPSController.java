@@ -1,6 +1,5 @@
 package rps;
 
-import rps.domain.NumberOfWinsInTheGame;
 import rps.util.coduo.RandomTool;
 import rps.view.InputView;
 import rps.view.OutputView;
@@ -20,19 +19,29 @@ public class RPSController {
     public void start() {
         outputView.printStartMessage();
         readWinCount();
-        playRPS();
+        while (numberOfWinsInTheGame.isOver()) {
+            playRPS();
+        }
     }
 
     private void playRPS() {
         try {
-            String selectedByUserRPS = inputView.readRPS();
-            String selectedByComputerRPS = RandomTool.pickRSP();
+            RPS selectedByUserRPS = inputView.readRPS();
+            RPS selectedByComputerRPS = getRandomRPS();
             int judged = Judgment.judge(selectedByUserRPS, selectedByComputerRPS);
             outputView.printResult(selectedByComputerRPS, judged);
+            if(judged == 1) numberOfWinsInTheGame.addCount();
         }catch (Exception e) {
             outputView.printException(e.getMessage());
         }
+    }
 
+
+    private RPS getRandomRPS() {
+        String random = RandomTool.pickRSP();
+        if (random.equals("rock")) return RPS.ROCK;
+        if (random.equals("paper")) return RPS.PAPER;
+        return RPS.SCISSORS;
     }
 
     private void readWinCount() {
