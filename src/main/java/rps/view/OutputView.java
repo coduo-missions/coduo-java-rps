@@ -20,10 +20,10 @@ public class OutputView {
             result = result + "상대방이 승리했습니다!";
         }
         if(judge == 0) {
-            result = result + "무승부 입니다!";
+            result = result + "무승부입니다!";
         }
         if(judge == -1) {
-            result = result + "당신이 승리했습니다.";
+            result = result + "당신이 승리했습니다!";
         }
         System.out.println(result + "\n");
 
