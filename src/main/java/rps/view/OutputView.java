@@ -4,6 +4,7 @@ import rps.RPS;
 
 public class OutputView {
     private final String START_MESSAGE = "가위바위보 게임을 시작합니다.\n";
+    private final String END_MESSAGE= "가위바위보 게임을 승리했습니다! 게임 종료";
 
     public void printStartMessage() {
         System.out.println(START_MESSAGE);
@@ -26,5 +27,9 @@ public class OutputView {
         }
         System.out.println(result + "\n");
 
+    }
+
+    public void printEndMessage() {
+        System.out.println(END_MESSAGE);
     }
 }

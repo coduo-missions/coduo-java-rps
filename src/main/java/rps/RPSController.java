@@ -22,6 +22,7 @@ public class RPSController {
         while (numberOfWinsInTheGame.isOver()) {
             playRPS();
         }
+        outputView.printEndMessage();
     }
 
     private void playRPS() {
@@ -35,7 +36,6 @@ public class RPSController {
             outputView.printException(e.getMessage());
         }
     }
-
 
     private RPS getRandomRPS() {
         String random = RandomTool.pickRSP();
