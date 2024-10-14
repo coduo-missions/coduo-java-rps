@@ -1,18 +1,15 @@
 package rps.util.model;
 
-import rps.util.coduo.RandomTool;
-
 public class Computer {
 
-    private RPS rspValue;
+    private RPS rpsValue;
 
-    public Computer() {
-        String value = RandomTool.pickRSP();
-        if (value.equals("scissors")) rspValue = RPS.SCISSOR;
-        if (value.equals("rock")) rspValue = RPS.ROCK;
-        if (value.equals("paper")) rspValue = RPS.PAPER;
+    public Computer(String rsp) {
+        if (rsp.equals("scissors")) rpsValue = RPS.SCISSOR;
+        if (rsp.equals("rock")) rpsValue = RPS.ROCK;
+        if (rsp.equals("paper")) rpsValue = RPS.PAPER;
     }
     public RPS peekRSP() {
-        return rspValue;
+        return rpsValue;
     }
 }

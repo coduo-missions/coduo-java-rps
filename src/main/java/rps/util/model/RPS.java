@@ -5,8 +5,8 @@ public enum RPS {
     ROCK("바위", "rock"),
     PAPER("보", "paper");
 
-    private String korRsp;
-    private String engRsp;
+    private final String korRsp;
+    private final String engRsp;
 
     private RPS(String kor, String eng) {
         this.korRsp = kor;
