@@ -1,6 +1,7 @@
 package rps.domain;
 
 import java.util.Objects;
+import rps.util.coduo.RandomTool;
 
 public class Rps {
     private static final String ROCK = "바위";
@@ -18,10 +19,28 @@ public class Rps {
         this.rpsValue = rpsValue;
     }
 
+    public static Rps computerRps() {
+        return new Rps(mapRandomRps(RandomTool.pickRSP()));
+    }
+
+    private static String mapRandomRps(final String englishRps) {
+        if (englishRps.equals("rock")) {
+            return ROCK;
+        }
+        if (englishRps.equals("paper")) {
+            return PAPER;
+        }
+        return SCISSORS;
+    }
+
     private void validateRps(final String rpsValue) {
         if (!rpsValue.equals(ROCK) && !rpsValue.equals(PAPER) && !rpsValue.equals(SCISSORS)) {
             throw new IllegalArgumentException(INCORRECT_PRS_ERROR);
         }
+    }
+
+    public boolean isWin(final Rps computer) {
+        return determineGameResult(computer) == WIN_VALUE;
     }
 
     public int determineGameResult(final Rps computer) {
@@ -55,5 +74,9 @@ public class Rps {
     @Override
     public int hashCode() {
         return Objects.hashCode(rpsValue);
+    }
+
+    public String getRpsValue() {
+        return rpsValue;
     }
 }

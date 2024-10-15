@@ -16,4 +16,8 @@ public class WinningCount {
             throw new IllegalArgumentException(VALUE_ERROR_MESSAGE);
         }
     }
+
+    public boolean isEnd(final int count) {
+        return count == winningCount;
+    }
 }
