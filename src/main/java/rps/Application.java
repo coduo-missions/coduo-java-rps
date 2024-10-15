@@ -19,6 +19,6 @@ public class Application {
             }
             OutputView.printRpsResult(user, computer);
         }
-
+        OutputView.printEndMessage();
     }
 }
