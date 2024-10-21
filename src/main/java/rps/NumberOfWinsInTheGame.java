@@ -24,7 +24,6 @@ public class NumberOfWinsInTheGame {
     }
 
     public boolean isOver() {
-        if(numberOfWins == count) return false;
-        return true;
+        return numberOfWins != count;
     }
 }
