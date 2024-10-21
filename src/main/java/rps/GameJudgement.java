@@ -1,7 +1,7 @@
 package rps;
 
 public class GameJudgement {
-    public static int judge(RPS left, RPS right) {
+    public static final int judge(RPS left, RPS right) {
         if (left.equals(right)) {
             return 0;
         }

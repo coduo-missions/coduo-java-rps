@@ -5,14 +5,14 @@ public enum RPS {
     PAPER("보", "paper"),
     SCISSORS("가위", "scissors");
 
-    private String korRPS;
-    private String engRPS;
+    private String koreanRPS;
+    private String englishRPS;
 
     private RPS(String korRPS, String engRPS) {
-        this.korRPS = korRPS;
-        this.engRPS = engRPS;
+        this.koreanRPS = korRPS;
+        this.englishRPS = engRPS;
     }
     public String getKorRPS() {
-        return korRPS;
+        return koreanRPS;
     }
 }
