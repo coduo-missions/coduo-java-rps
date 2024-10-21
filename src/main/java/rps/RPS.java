@@ -1,12 +1,11 @@
 package rps;
 
 import java.util.function.BiFunction;
-import java.util.function.Function;
 
 public enum RPS {
-    ROCK("바위", "rock"),
-    PAPER("보", "paper"),
-    SCISSORS("가위", "scissors");
+    ROCK("바위", "rock", (user,computer)-> user.judge(computer)),
+    PAPER("보", "paper",(user,computer)-> user.judge(computer)),
+    SCISSORS("가위", "scissors",(user,computer)-> user.judge(computer));
 
     public static final int WIN = 1;
     public static final int LOSE = -1;
@@ -14,14 +13,19 @@ public enum RPS {
 
     private final String koreanRPS;
     private final String englishRPS;
+    private final BiFunction<RPS, RPS, Integer> rpsFunction;
 
-    private RPS(String korRPS, String engRPS) {
+    private RPS(String korRPS, String engRPS, BiFunction<RPS, RPS, Integer> rpsFunction) {
         this.koreanRPS = korRPS;
         this.englishRPS = engRPS;
+        this.rpsFunction = rpsFunction;
     }
 
     public String getKorRPS() {
         return koreanRPS;
+    }
+    public Integer judgement(RPS computer) {
+        return rpsFunction.apply(this,computer);
     }
 
     public Integer judge(RPS rps) {

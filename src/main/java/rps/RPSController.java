@@ -29,7 +29,7 @@ public class RPSController {
         try {
             RPS selectedByUserRPS = inputView.readRPS();
             RPS selectedByComputerRPS = getRandomRPS();
-            int judged = selectedByUserRPS.judge(selectedByComputerRPS);
+            int judged = selectedByUserRPS.judgement(selectedByComputerRPS);
             outputView.printResult(selectedByComputerRPS, judged);
             if(judged == RPS.WIN) numberOfWinsInTheGame.addCount();
         }catch (Exception e) {
