@@ -1,8 +1,8 @@
 package rps;
 
 public class NumberOfWinsInTheGame {
-    private final int MINNMUM_NUMBER_OF_WINS = 1;
-    private final int MAXNMUM_NUMBER_OF_WINS = 5;
+    private static final int MINNMUM_NUMBER_OF_WINS = 1;
+    private static final int MAXNMUM_NUMBER_OF_WINS = 5;
 
     private int numberOfWins;
     private int count;
