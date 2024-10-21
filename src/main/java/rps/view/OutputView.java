@@ -1,5 +1,6 @@
 package rps.view;
 
+import rps.GameJudgement;
 import rps.RPS;
 
 public class OutputView {
@@ -16,14 +17,14 @@ public class OutputView {
 
     public void printResult(RPS selectedByComputerRPS, int judge) {
         String result = "상대방은 "+selectedByComputerRPS.getKorRPS()+"를 제출 했습니다. ";
-        if(judge == 1) {
-            result = result + "상대방이 승리했습니다!";
+        if(judge == GameJudgement.WIN) {
+            result = result + "당신이 승리했습니다!";
         }
-        if(judge == 0) {
+        if(judge == GameJudgement.DRAW) {
             result = result + "무승부입니다!";
         }
-        if(judge == -1) {
-            result = result + "당신이 승리했습니다!";
+        if(judge == GameJudgement.LOSE) {
+            result = result + "상대방이 승리했습니다!";
         }
         System.out.println(result + "\n");
 

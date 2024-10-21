@@ -1,19 +1,22 @@
 package rps;
 
 public class GameJudgement {
-    public static final int judge(RPS left, RPS right) {
-        if (left.equals(right)) {
-            return 0;
+    public static final int WIN = 1;
+    public static final int LOSE = -1;
+    public static final int DRAW = 0;
+    public static final int judge(RPS user, RPS computer) {
+        if (user.equals(computer)) {
+            return DRAW;
         }
-        if (left.equals(RPS.SCISSORS)) {
-            if (right.equals(RPS.ROCK)) return -1;
+        if (user.equals(RPS.SCISSORS)) {
+            if (computer.equals(RPS.ROCK)) return LOSE;
         }
-        if (left.equals(RPS.ROCK)){
-            if (right.equals(RPS.PAPER)) return -1;
+        if (user.equals(RPS.ROCK)){
+            if (computer.equals(RPS.PAPER)) return LOSE;
         }
-        if (left.equals(RPS.PAPER)){
-            if (right.equals(RPS.SCISSORS)) return -1;
+        if (user.equals(RPS.PAPER)){
+            if (computer.equals(RPS.SCISSORS)) return LOSE;
         }
-        return 1;
+        return WIN;
     }
 }
