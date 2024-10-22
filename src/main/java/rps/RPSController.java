@@ -6,8 +6,8 @@ import rps.view.OutputView;
 
 public class RPSController {
 
-    private InputView inputView;
-    private OutputView outputView;
+    private final InputView inputView;
+    private final OutputView outputView;
 
     private NumberOfWinsInTheGame numberOfWinsInTheGame;
 
