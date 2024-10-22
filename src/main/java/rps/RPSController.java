@@ -5,7 +5,6 @@ import rps.view.InputView;
 import rps.view.OutputView;
 
 public class RPSController {
-
     private final InputView inputView;
     private final OutputView outputView;
 
