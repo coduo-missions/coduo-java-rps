@@ -27,6 +27,7 @@ public class RPSController {
     }
 
     private void readWinCount() {
+        outputView.printReadNumberOfWinsMessage();
         int readNumberOfWins = inputView.readNumberOfWins();
         NumberOfWinsInTheGame numberOfWinsInTheGame = gameService.readWinCount(readNumberOfWins);
         if(numberOfWinsInTheGame == null){
@@ -35,6 +36,7 @@ public class RPSController {
     }
 
     private void playRPS() {
+        outputView.printReadRPSMessage();
         try {
             String readRPS = inputView.readRPS();
             RPS selectedByUserRPS = gameService.getRPS(readRPS);

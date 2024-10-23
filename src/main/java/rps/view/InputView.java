@@ -4,7 +4,6 @@ import rps.util.coduo.Console;
 
 public class InputView {
     public int readNumberOfWins() {
-        System.out.print("승리를 위한 횟수를 입력하세요: ");
         try {
             String input = Console.input();
             System.out.println();
@@ -16,7 +15,6 @@ public class InputView {
     }
 
     public String readRPS() {
-        System.out.print("가위, 바위, 보 중 하나를 입력하세요: ");
         String input = Console.input();
         return input.trim();
     }

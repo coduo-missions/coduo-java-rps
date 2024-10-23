@@ -23,4 +23,12 @@ public class OutputView {
     public void printEndMessage() {
         System.out.println(END_MESSAGE);
     }
+
+    public void printReadNumberOfWinsMessage() {
+        System.out.print("승리를 위한 횟수를 입력하세요: ");
+    }
+
+    public void printReadRPSMessage() {
+        System.out.print("가위, 바위, 보 중 하나를 입력하세요: ");
+    }
 }
