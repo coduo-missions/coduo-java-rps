@@ -1,14 +1,13 @@
 package rps;
 
-import rps.util.coduo.RandomTool;
+
 import rps.view.InputView;
 import rps.view.OutputView;
 
 public class RPSController {
     private final InputView inputView;
     private final OutputView outputView;
-
-    private NumberOfWinsInTheGame numberOfWinsInTheGame;
+    private RPSGameService gameService;
 
     public RPSController() {
         this.inputView = new InputView();
@@ -17,37 +16,32 @@ public class RPSController {
 
     public void start() {
         outputView.printStartMessage();
-        readWinCount();
-        while (numberOfWinsInTheGame.isOver()) {
+        NumberOfWinsInTheGame numberOfWinsInTheGame = readWinCount();
+        gameService = new RPSGameService(numberOfWinsInTheGame);
+
+        while (gameService.isOver()) {
             playRPS();
         }
+
         outputView.printEndMessage();
+    }
+
+    private NumberOfWinsInTheGame readWinCount() {
+        int readNumberOfWins = inputView.readNumberOfWins();
+        NumberOfWinsInTheGame numberOfWinsInTheGame = gameService.readWinCount(readNumberOfWins);
+        if(numberOfWinsInTheGame == null){
+            throw new IllegalArgumentException("[ERROR] 승리횟수는 숫자여야 합니다.");
+        }
+
+        return numberOfWinsInTheGame;
     }
 
     private void playRPS() {
         try {
             RPS selectedByUserRPS = inputView.readRPS();
-            RPS selectedByComputerRPS = getRandomRPS();
-            int judged = selectedByUserRPS.judgement(selectedByComputerRPS);
-            outputView.printResult(selectedByComputerRPS, judged);
-            if(judged == RPS.WIN) numberOfWinsInTheGame.addCount();
-        }catch (Exception e) {
-            outputView.printException(e.getMessage());
-        }
-    }
-
-    private RPS getRandomRPS() {
-        String random = RandomTool.pickRSP();
-        if (random.equals("rock")) return RPS.ROCK;
-        if (random.equals("paper")) return RPS.PAPER;
-        return RPS.SCISSORS;
-    }
-
-    private void readWinCount() {
-        int tmp;
-        try {
-            tmp = inputView.readNumberOfWins();
-            numberOfWinsInTheGame = new NumberOfWinsInTheGame(tmp);
+            RPS selectedByComputerRPS = gameService.getRandomRPS();
+            int result = gameService.getResult(selectedByUserRPS, selectedByComputerRPS);
+            outputView.printResult(selectedByComputerRPS, result);
         }catch (Exception e) {
             outputView.printException(e.getMessage());
         }
