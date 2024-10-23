@@ -38,7 +38,8 @@ public class RPSController {
 
     private void playRPS() {
         try {
-            RPS selectedByUserRPS = inputView.readRPS();
+            String readRPS = inputView.readRPS();
+            RPS selectedByUserRPS = gameService.getRPS(readRPS);
             RPS selectedByComputerRPS = gameService.getRandomRPS();
             int result = gameService.getResult(selectedByUserRPS, selectedByComputerRPS);
             outputView.printResult(selectedByComputerRPS, result);

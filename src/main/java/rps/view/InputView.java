@@ -16,13 +16,9 @@ public class InputView {
         }
     }
 
-    public RPS readRPS() {
+    public String readRPS() {
         System.out.print("가위, 바위, 보 중 하나를 입력하세요: ");
         String input = Console.input();
-        input = input.trim();
-        if(input.equals("가위")) return RPS.SCISSORS;
-        if(input.equals("바위")) return RPS.ROCK;
-        if(input.equals("보")) return RPS.PAPER;
-        throw new IllegalArgumentException("[ERROR] 가위, 바위, 보 중 하나를 입력하세요");
+        return input.trim();
     }
 }
