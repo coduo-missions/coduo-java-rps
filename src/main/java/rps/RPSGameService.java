@@ -3,20 +3,29 @@ package rps;
 import rps.util.coduo.RandomTool;
 
 public class RPSGameService {
-    private final NumberOfWinsInTheGame numberOfWinsInTheGame;
+    private NumberOfWinsInTheGame numberOfWinsInTheGame;
 
-    public RPSGameService(NumberOfWinsInTheGame numberOfWinsInTheGame) {
-        this.numberOfWinsInTheGame = numberOfWinsInTheGame;
+    public RPSGameService() {
+        numberOfWinsInTheGame = null;
     }
 
     public boolean isOver() {
         return numberOfWinsInTheGame.isOver();
     }
 
-    public int getResult(RPS selectedByUserRPS, RPS selectedByComputerRPS) {
+    public String getResult(RPS selectedByUserRPS, RPS selectedByComputerRPS) {
         int judged = selectedByUserRPS.judgement(selectedByComputerRPS);
         addNumberOfWinsInTheGame(judged);
-        return judged;
+        if(judged == RPS.WIN) {
+            return "당신이 승리했습니다!";
+        }
+        if(judged == RPS.DRAW) {
+            return "무승부입니다!";
+        }
+        if(judged == RPS.LOSE) {
+            return "상대방이 승리했습니다!";
+        }
+        return "";
     }
 
     private void addNumberOfWinsInTheGame(int judged) {
@@ -32,10 +41,11 @@ public class RPSGameService {
 
     public NumberOfWinsInTheGame readWinCount(int readNumberOfWins) {
         try {
-            return new NumberOfWinsInTheGame(readNumberOfWins);
+            numberOfWinsInTheGame = new NumberOfWinsInTheGame(readNumberOfWins);
         }catch (Exception e) {
             throw e;
         }
+        return numberOfWinsInTheGame;
     }
 
     public RPS getRPS(String input){

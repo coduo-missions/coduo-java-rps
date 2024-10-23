@@ -1,6 +1,5 @@
 package rps.view;
 
-import rps.RPS;
 import rps.util.coduo.Console;
 
 public class InputView {

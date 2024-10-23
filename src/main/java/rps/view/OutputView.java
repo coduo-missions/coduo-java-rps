@@ -14,19 +14,10 @@ public class OutputView {
         System.out.println(message);
     }
 
-    public void printResult(RPS selectedByComputerRPS, int judge) {
-        String result = "상대방은 "+selectedByComputerRPS.getKorRPS()+"를 제출 했습니다. ";
-        if(judge == RPS.WIN) {
-            result = result + "당신이 승리했습니다!";
-        }
-        if(judge == RPS.DRAW) {
-            result = result + "무승부입니다!";
-        }
-        if(judge == RPS.LOSE) {
-            result = result + "상대방이 승리했습니다!";
-        }
-        System.out.println(result + "\n");
-
+    public void printResult(RPS selectedByComputerRPS, String  judge) {
+        String result = "상대방은 "+selectedByComputerRPS.getKorRPS()+"를 제출 했습니다. " + judge;
+        System.out.println(result);
+        System.out.println();
     }
 
     public void printEndMessage() {

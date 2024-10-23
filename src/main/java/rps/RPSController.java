@@ -16,8 +16,8 @@ public class RPSController {
 
     public void start() {
         outputView.printStartMessage();
-        NumberOfWinsInTheGame numberOfWinsInTheGame = readWinCount();
-        gameService = new RPSGameService(numberOfWinsInTheGame);
+        gameService = new RPSGameService();
+        readWinCount();
 
         while (gameService.isOver()) {
             playRPS();
@@ -26,14 +26,12 @@ public class RPSController {
         outputView.printEndMessage();
     }
 
-    private NumberOfWinsInTheGame readWinCount() {
+    private void readWinCount() {
         int readNumberOfWins = inputView.readNumberOfWins();
         NumberOfWinsInTheGame numberOfWinsInTheGame = gameService.readWinCount(readNumberOfWins);
         if(numberOfWinsInTheGame == null){
             throw new IllegalArgumentException("[ERROR] 승리횟수는 숫자여야 합니다.");
         }
-
-        return numberOfWinsInTheGame;
     }
 
     private void playRPS() {
@@ -41,7 +39,7 @@ public class RPSController {
             String readRPS = inputView.readRPS();
             RPS selectedByUserRPS = gameService.getRPS(readRPS);
             RPS selectedByComputerRPS = gameService.getRandomRPS();
-            int result = gameService.getResult(selectedByUserRPS, selectedByComputerRPS);
+            String result = gameService.getResult(selectedByUserRPS, selectedByComputerRPS);
             outputView.printResult(selectedByComputerRPS, result);
         }catch (Exception e) {
             outputView.printException(e.getMessage());
